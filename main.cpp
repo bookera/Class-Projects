@@ -1,74 +1,77 @@
-/* Author: Andrew Booker
-   Name: Working with Input and Formatted output in C++
-   Description: Write a program to do the cost estimations for carpet installation
+/*
+Author: Andrew Booker
+
+Date:09/25/2017
+
+Program name: Working with Equations in C++
+
+Description: calculate the gasoline expenses to determine the budget of a trip
 */
 
 #include <iostream>
-#include <iomanip>
+
 using namespace std;
 
 int main()
 {
-    // Initialize your variables, make sure to make the tax constant and the room name a char data type
-    string room;
-    const double TAX = 0.057;
-    const double LABOR = 6.03;
-    int length, width;
-    double pricePerYard, padding, totalFeet, totalYards, carpetCost,
-     subTotal, totalCost, laborCost, salesTax;
+    //Initialized your variables for assignment
+    double payedAmount1, payedAmount2, cashBack1, cashBack2, gasStation1, gasStation2,
+    vehicle, netPrice1, netPrice2, netSavings, bonus1, bonus2;
 
+    // Display a friendly heading for the user
+    cout << " Welcome to budget tracker 101 " << endl;
+    cout << "\n";
 
-    // Center the welcome text then prompt and display the users room name
-    cout << setw(70) << " Welcome to Andrew's Carpet Calculator! (Trial Edition)" << "\n\n" << endl;
-    cout << "Please enter the name of the room you are carpeting:";
-    cin >> room;
+    // initialize your vehicle and gas station variables and assign them their appropiate values
+    vehicle = 25;
+    gasStation1 = 3.74;
 
-    // Prompt the user to enter the length, width, price, and padding then display the results
-    cout << "Enter the length in feet:";
-    cin >> length;
+    // calculate the total of the amount payed from the first credit card
+    payedAmount1 = vehicle * gasStation1;
 
-    cout << "Enter the width in feet:";
-    cin >> width;
+    // display the total amount payed and the bonus
+    cout << " The total amount payed with your first card is $" << payedAmount1 << endl;
+    cout << "\n";
 
-    cout << "Enter the price of the carpet per yard:$";
-    cin >> pricePerYard;
+    //Calculate and display the payed amount, cash back,and net price from the first credit card
+    bonus1 = 0.03;
 
-    cout << "Enter the padding cost:$";
-    cin >> padding;
+    cashBack1 = payedAmount1 * bonus1;
+    netPrice1 = payedAmount1 - cashBack1;
 
-    // Display the total square feet and square yards for the room
-    cout << setw(70) << " Here is your carpet estimate for " << room << endl;
-    cout << "\n\n";
+    cout << " Congratulations! Your cash-back savings are $" << cashBack1 << endl;
+    cout << "\n";
 
-    // Calculate and display the total square feet and yards of the room
-    totalFeet = length * width;
-    cout << "The total square feet of " << room << " is " << totalFeet << endl;
+    cout << " The net price for your first card is now $" << netPrice1 << endl;
+    cout << "\n";
 
-    totalYards = totalFeet / 9;
-    cout << "The total square yards of " << room << " is " << totalYards << endl;
-    cout << "\n\n";
+    // Initialize and declare your variables for the gas per gallon and payed amount
+    gasStation2 = 4.09;
+    payedAmount2 = vehicle * gasStation2;
 
-    // Displays the results in a fixed amount of decimals to the second decimal place makes them neat
-    cout << setprecision(2) << fixed;
+    // Display the amount payed and the cash back savings for your Fill-A-Tank card
+    cout << " The total amount payed with your Fill-A-Tank card is $" << payedAmount2 << endl;
+    cout << "\n";
 
-    // Display the total cost of the carpet, labor, and padding neatly aligned
-    carpetCost = totalYards * pricePerYard;
-    cout << "The total cost of the carpet needed is:" << setw(10) << "$" << carpetCost << endl;
+    // Initialize calculate and display the net price and cash back
+    bonus2 = 0.045;
 
-    laborCost = LABOR * totalYards;
-    cout << "The total cost of labor(at $6.03/yard):" << setw(10) << "$" << laborCost << endl;
+    cashBack2 = payedAmount2 * bonus2;
+    netPrice2 = payedAmount2 - cashBack2;
 
-    cout << "Padding Cost:" << setw(36) << "$" << padding << "\n\n" << endl;
+    cout << " Congratulations! Your cash-back savings are $" << cashBack2 << endl;
+    cout << "\n";
 
-    // Finally calculate and display the subtotal,tax and grand total
-    subTotal = padding + laborCost + carpetCost;
-    cout << "Subtotal:" << setw(40) << "$" << subTotal << endl;
+    cout << " Your net price for your Fill-A-Tank card is $" << netPrice2 << endl;
+    cout << "\n";
 
-    salesTax = subTotal * TAX;
-    cout << "Tax:" << setw(45) << "$" << salesTax << endl;
+    //Lastly initialize, declare, and display the net savings between the two transactions
+    netSavings = netPrice2 - netPrice1;
 
-    totalCost = salesTax + subTotal;
-    cout << "Your total is:" << setw(35) << "$" << totalCost << endl;
+    cout << " Finally Your net savings between both transactions is $" << netSavings << endl;
+    cout << "\n";
+
+    cout << " You will save more with the first credit card" << endl;
 
     return 0;
 }
