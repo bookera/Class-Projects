@@ -1,77 +1,100 @@
-/*
-Author: Andrew Booker
-
-Date:09/25/2017
-
-Program name: Working with Equations in C++
-
-Description: calculate the gasoline expenses to determine the budget of a trip
+/* Author: Andrew Booker
+   Name: conditional statements in C++
+   Description: Write a program that calculates and displays the discounts based on reward level
 */
-
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-    //Initialized your variables for assignment
-    double payedAmount1, payedAmount2, cashBack1, cashBack2, gasStation1, gasStation2,
-    vehicle, netPrice1, netPrice2, netSavings, bonus1, bonus2;
+    // Initialize your variables, making sure to make a constant for the max discount
+    double discount, finalSale, salesAmount, addDiscount, totalDis;
+    const double MAX_DISCOUNT = 30.00;
+    char reward;
 
-    // Display a friendly heading for the user
-    cout << " Welcome to budget tracker 101 " << endl;
-    cout << "\n";
+    // Prompt the user to enter the initial sales amount and reward level
+    cout << setw(80) << " Welcome to Andrew's Discount Jewelry Outlet \n\n";
+    cout << "Please enter the sales amount" << endl;
+    cin >> salesAmount;
+    cout << "Please enter your reward level (G) (S) or (B)" << endl;
+    cin >> reward;
 
-    // initialize your vehicle and gas station variables and assign them their appropiate values
-    vehicle = 25;
-    gasStation1 = 3.74;
+    // make a switch statement for the rewards memberships
+    switch (reward)
+    {
+        case 'G':
+        case 'g':   // apply the discount and additional discount  for a gold membership
+                    discount = 0.12;
+                    addDiscount = 0.035;
 
-    // calculate the total of the amount payed from the first credit card
-    payedAmount1 = vehicle * gasStation1;
+                    if (salesAmount < 200 )
+                     {
+                       totalDis = salesAmount * discount;
+                     }
+                    else
+                     {
 
-    // display the total amount payed and the bonus
-    cout << " The total amount payed with your first card is $" << payedAmount1 << endl;
-    cout << "\n";
+                        totalDis = (salesAmount * discount) + (salesAmount - 200) * addDiscount;
+                     }
+                     // make a conditional statement for the max discount and display the results
+                     totalDis = totalDis > 30.00 ? MAX_DISCOUNT : totalDis;
+                     finalSale = salesAmount - totalDis;
+                     cout << "Reward type: Gold" << endl;
+                     cout << setprecision(2) << fixed;
+                     cout << "Your rewards discount is: $" << totalDis << endl;
+                     cout << "The final sale amount is: $" << finalSale << endl;
+                     break;
 
-    //Calculate and display the payed amount, cash back,and net price from the first credit card
-    bonus1 = 0.03;
+         case 'S':
+         case 's':   // apply the discount and additional discount  for a silver membership
+                    discount = 0.08;
+                    addDiscount = 0.0225;
 
-    cashBack1 = payedAmount1 * bonus1;
-    netPrice1 = payedAmount1 - cashBack1;
+                    if (salesAmount < 200 )
+                     {
+                       totalDis = salesAmount * discount;
+                     }
+                    else
+                     {
 
-    cout << " Congratulations! Your cash-back savings are $" << cashBack1 << endl;
-    cout << "\n";
+                        totalDis = (salesAmount * discount) + (salesAmount - 200) * addDiscount;
+                     }
 
-    cout << " The net price for your first card is now $" << netPrice1 << endl;
-    cout << "\n";
+                     totalDis = totalDis > 30.00 ? MAX_DISCOUNT : totalDis;
+                     // calculate and display the final sales amount with the discount applied
+                     finalSale = salesAmount - totalDis;
+                     cout << "Reward type: Silver" << endl;
+                     cout << setprecision(2) << fixed;
+                     cout << "Your rewards discount is: $" << totalDis << endl;
+                     cout << "The final sale amount is: $" << finalSale << endl;
+                     break;
 
-    // Initialize and declare your variables for the gas per gallon and payed amount
-    gasStation2 = 4.09;
-    payedAmount2 = vehicle * gasStation2;
+         case 'B':
+         case 'b':   // apply the discount and additional discount  for a bronze membership
+                    discount = 0.04;
+                    addDiscount = 0.0175;
 
-    // Display the amount payed and the cash back savings for your Fill-A-Tank card
-    cout << " The total amount payed with your Fill-A-Tank card is $" << payedAmount2 << endl;
-    cout << "\n";
+                    if (salesAmount < 200 )
+                     {
+                       totalDis = salesAmount * discount;
+                     }
+                    else
+                     {
 
-    // Initialize calculate and display the net price and cash back
-    bonus2 = 0.045;
+                        totalDis = (salesAmount * discount) + (salesAmount - 200) * addDiscount;
+                     }
 
-    cashBack2 = payedAmount2 * bonus2;
-    netPrice2 = payedAmount2 - cashBack2;
-
-    cout << " Congratulations! Your cash-back savings are $" << cashBack2 << endl;
-    cout << "\n";
-
-    cout << " Your net price for your Fill-A-Tank card is $" << netPrice2 << endl;
-    cout << "\n";
-
-    //Lastly initialize, declare, and display the net savings between the two transactions
-    netSavings = netPrice2 - netPrice1;
-
-    cout << " Finally Your net savings between both transactions is $" << netSavings << endl;
-    cout << "\n";
-
-    cout << " You will save more with the first credit card" << endl;
+                     totalDis = totalDis > 30.00 ? MAX_DISCOUNT : totalDis;
+                     finalSale = salesAmount - totalDis;
+                     cout << "Reward type: Bronze" << endl;
+                     cout << setprecision(2) << fixed;
+                     cout << "Your rewards discount is: $" << totalDis << endl;
+                     cout << "The final sale amount is: $" << finalSale << endl;
+                     break;
+          // display a message if the user enters the wrong rewards type
+          default:   cout << "\n You did not enter a valid reward type";
+    }
 
     return 0;
 }
